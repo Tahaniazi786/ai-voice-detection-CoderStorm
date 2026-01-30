@@ -75,3 +75,6 @@ def detect_voice(
         "classification": label,
         "confidence_score": confidence
     }
+@app.get("/healthz")
+def health():
+    return {"status": "ok"}

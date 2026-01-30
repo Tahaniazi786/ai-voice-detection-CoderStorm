@@ -16,10 +16,15 @@ app = FastAPI(
 # -----------------------------
 # Request Schema
 # -----------------------------
+from pydantic import BaseModel, Field
+
 class AudioRequest(BaseModel):
     language: str
-    audio_format: str
-    audio_base64: str
+    audio_format: str = Field(..., alias="audioFormat")
+    audio_base64: str = Field(..., alias="audioBase64")
+
+    class Config:
+        allow_population_by_field_name = True
 
 # -----------------------------
 # Health Check (optional but safe)
